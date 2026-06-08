@@ -1,7 +1,7 @@
-# CrackerArchery
+# Archery
 
-> A Spring Boot REST API that determines whether an arrow (line segment) intersects with a cracker target (square) based on provided geometric coordinates.
-> In the future can determine interaction with other targets.
+> A Spring Boot REST API that determines whether an arrow (line segment) intersects with a target (square) based on provided geometric coordinates.
+> In the future can determine interaction with other target shapes.
 > For authenticated user provides information about how many requests are currently being processed by the application.
 
 ---
@@ -47,20 +47,24 @@ HTTP Request
 | `domain` | Pure models — no Spring, no annotations, no framework dependencies |
 | `exception` | Centralized error handling via `GlobalExceptionHandler` |
 | `security` | Basic Auth configuration via Spring Security |
+| `interceptor` | Request lifecycle monitoring, collection of runtime request metrics (e.g., tracking currently processed requests)|
 
 ---
 
 ## Tech Stack
 
-| Library | Version | Why |
-|---|---|---|
-| Spring Boot | 4.0.6 | Production-grade application framework with minimal setup |
-| Spring Security | 7.0.5 | Industry standard for securing endpoints; |
-| SpringDoc OpenAPI | 2.5.0 | Auto-generates Swagger UI from annotations — no manual API docs maintenance |
-| Spring `ProblemDetail` | built-in | RFC 7807 compliant error responses; no extra dependency, consistent error shape across all endpoints |
-| Lombok | 1.18.x | Eliminates boilerplate; keeps domain models concise |
-| Java Records | Java 21 | Used for request/response models to enforce immutability and reduce noise |
-| Abstract `Target` class | — | Enables future target shapes (e.g. circle, triangle) without modifying service logic |
+| Library                | Version           | Why                                                                                     |
+|------------------------|-------------------|-----------------------------------------------------------------------------------------|
+| Spring Boot            | 4.0.6             | Production-grade application framework with minimal setup                               |
+| Spring MVC             | 4.0.6             | REST API implementation and request processing;                                         |
+| Spring Security        | 7.0.5             | Industry standard for securing endpoints;                                               |
+| SpringDoc OpenAPI      | 2.5.0             | Auto-generates Swagger UI from annotations — no manual API docs maintenance             |
+| Spring `ProblemDetail` | built-in          | Standardized RFC 7807 error responses                                                   |
+| Lombok                 | 1.18.x            | Eliminates boilerplate; keeps domain models concise                                     |
+| Lombok                 | Latest compatible | Used for request/response models to enforce immutability and reduce noise               |
+| Java                   | 21                | Modern language features and improved runtime performance                               |
+| Spring Test            | 4.0.6             | Supports controller, integration, and security testing through Spring testing utilities |
+| Mockito                | 5.11.0            | Mocking framework for isolated tests                                                    |
 
 ---
 
